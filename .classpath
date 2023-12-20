@@ -5,5 +5,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=NewPackageIvy&amp;ivyXmlPath=ivy.xml&amp;confs=*&amp;ivySettingsPath=ivysettings.xml&amp;loadSettingsOnDemand=false&amp;ivyUserDir=&amp;propertyFiles="/>
 	<classpathentry kind="lib" path="lib/mtj-0.9.12.jar"/>
+	<classpathentry kind="lib" path="lib/apptips-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/libga-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/grappa-1.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
