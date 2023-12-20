@@ -1,0 +1,95 @@
+Importer:
+(1) Import Component Configuration (.conf) -->software.processmining.imports.ImportComponentConfiguration
+	Note: this importer is used to import the component configuration for the component behavior discovery, interface behavior discover and interaction behavior plugins. 
+(2) Import Class Type Hierarchy (.cth) -->software.processmining.imports.ImportClassTypeHierarchy
+	Note: this importer is used to import the Class Type Hierarchy for the pattern instance discovery plugins. 
+
+Visualizer:
+(1) Visualize Component Configuration-->software.processmining.visualizer.VisualizeComponentConfig
+	Note: this visualizer tries to visualize the component to classes mapping, where each component is a cluster and each class is a dotnode. 
+(2) Visualize Class Type Hierarchy-->software.processmining.visualizer.VisualizeClassTypeHierarchy
+	Note: this visualizer tries to visualize the Class Type Hierarchy.  
+
+Exporter:
+(1) Export Component Configuration (.conf)-->software.processmining.exports.ExportComponentConfiguration
+	Note: this exporter is used to export the component configuration to file system.  
+(1) Export Class Type Hierarchy (.cth)-->software.processmining.exports.ExportClassTypeHierarchy
+	Note: this exporter is used to export the Class Type Hierarchy to file system.  
+
+
+Plugin---log transformation: 
+(0) XPort based Software Event Log Pre-processing (V2-parameter values)-->software.processmining.XPortLogTransformation.SoftwareLogRefactoringPluginV2
+	Note: this plugin is used to transform the original software event log collected by the XPort tool to our ideal format. 
+(1) Software Event Log Cleaning (Handling Anonymous Classes)-->software.processmining.XPortLogTransformation.SoftwareEventLogCleaningPlugin
+	Note: handling anonymous inner class. "aaa$1"-->"aaa", "aa$ss$tt"-->tt, "aa$dd$33"-->dd. 
+
+Plugin---Hierarchical Process Discovery
+(1) Hierarchical Business Process Model Discovery-->Hierarchical.processdiscovery.HierarchicalBusinessProcessDiscoveryPlugin
+	Note: this plugin uses lifecycle information to infer processes with sub-processes.  
+
+	
+Plugin---component, interface discovery
+(1) Class Interaction Graph Discovery-->software.processmining.classinteractiondiscovery.ClassInteractionGraphPlugin
+	Note: this plugin constructs a class interaction graph, and then cluster each weakly connected component to obtain component clusters (configuration). 
+(2) Software Component Behavior Discovery-->software.processmining.componentbehaviordiscovery.SoftwareComponentBehaviorDiscoveryPlugin
+	Note: this plugin aims to discover component behavior model of software by taking software event log and component configuration file as input. 
+(3) Software Interface Behavior Discovery (Similarity)-->software.processmining.interfacediscovery.InterfaceBehaviorDiscoveryPlugin
+	Note: this plugin aims to identify a set of interfaces and then discover a hierarchical petri net model to describe the behavior. 
+(4) Integrated Software Interface Discovery Tool-->software.processmining.interfacediscoveryevaluation.IntegratedInterfaceDiscoveryPlugin
+	Note: this plugin aims to provide a set of approaches to discovery interfaces. 
+(5) Interface Quality Evaluation Tool-->software.processmining.interfacediscoveryevaluation.InterfaceQualityEvaluationPlugin
+	Note: this plugin evaluate the quality of an interface discovery approach by three metrics. 
+(6) Software Event Log Basic Statistics-->BasicStatisticsSoftwareEventLog.SoftwareEventLogStatisticsPlugin
+	Note: this plugin aims to provides the basic statistics information of the software event log. 
+(7) Construct Component Configuration Based on Package-->BasicStatisticsSoftwareEventLog.ConstructComponentByPackage
+	Note: this plugin aims to construct component by grouping classes of the same package. 
+(8) Merge Interface Using Similarity-->software.processmining.interfacesimilarity.MergeInterfaceUsingSimilarityPlugin
+	Note: this plugin aims to merge interfaces based on similarity. The input is a SoftwareDescrition object. 
+(9) Interface Behavioral Model Discovery (Hierarchical Petri Net)-->software.processmining.interfacediscoveryevaluation.InterfaceBehavioralModelDiscovery
+	Note: this plugin aims to discovery hierarchical interface behavioral models by using the softwareDescription (interfaces can be merged based on similarity threshold)
+			It support to discover interfaces of certain component. A interactive feature. 
+(10)Interface Complexity Metrics-->software.processmining.interfacediscoveryevaluation.InterfaceModelComplexityEvaluationPlugin
+	Note: this plugin aims to evaluate the complexity of discovered interface models.  	
+(11)Component Configuration Completeness Checking-->software.processmining.interaction.CheckCompletenessofComponentConfigurationPlugin
+	Note: this plugin aims to check if the component configuration is complete with respect to the software log. 	
+(12)Overlap Checking of Component Configuration-->software.processmining.interaction.CheckOverlappingofComponentConfigurationPlugin
+	Note: this plugin aims to check if the classes included in different components overlap.
+(13)Top-level Methods Per Component-->software.processmining.interaction.GetToplLevelMethodForComponentPlugin
+	Note: This plugin aims to get the top level methods for each component.
+(14)Convert a Hierarchical Petri Net to a Flat Petri Net-->software.processmining.componentbehaviordiscovery.ConvertHierarchicalPN2FlatPN
+	Note: this plugin aims to transform a hierarchical petri net to a flat one in a recursive way. 
+	For each sub-net in the hpn, it should contain a source place and a sink place. They are added manually based on the IM results.  
+(14)Multi-view Software Architecture Discovery Plugin-->software.processmining.multiviewinteraction.SoftwareArchitectureDiscoveryPlugin
+	Note: this plugin aims to discover an architecture of a software system. 
+(14+)Simple Software Architecture Discovery Plugin-->software.processmining.multiviewinteraction.SimpleSoftwareArchitectureDiscoveryPlugin
+	Note: this  plugin aims to discover a simple architectural model by taking:(1) software execution data; and (2) Software description. 
+(15)Method Calling Graph Discovery Plugin --> software.processmining.MethodCallingGraphDiscovery.MethodCallingGraphDiscoveryPlugin
+	Note: this plugin aims to discovery calling relation among methods. Specially, we use the class type hierarchy information discovered from log to connect same methods that are logged as different. 
+(16)Integrated Clustering based Component Identification Tool-->software.processmining.componentidentification.ClusteringBasedComponentIdentificationPlugin
+	Note: this plugin aims to provide a set of approaches to identify component from software execution data. 
+(16+)Quality Measure of Component Identification-->software.processmining.componentidentification.ComponentIdentificationQualityMeasurePlugin
+	Note: this plugin aims to provide a set of approaches to identify component from software execution data. 
+(16++) Quality Measure of Component Behavioral Models (All Components)-->package software.processmining.componentmodelevaluation.QualityMeasureComponentModelDiscoveryPlugin
+	Note: this plugin aims to provide a set of quality metrics for each hierarchical petri net for each component. 
+(17)[start end timestamp inaccuracy problem] Quality Measure of Hierarchical Petri net-->software.processmining.componentmodelevaluation.QualityMetricsHierarchicalPetriNetPlugin
+	Note: this plguin aims to measure the quality of a hierarchical petri net in in terms of fitness/precision/generalization. 
+(18) Convert Software Event Log to Log with Lifecycle Information-->software.processmining.componentbehaviordiscovery.ConvertSoftwareEventLog2LogwithLifecycle
+	Note: this plugin aims to add lifecycle information to a software event log. 
+(19) Convert a Petri Net to a Petri Net with Lifecycle Transitions-->software.processmining.componentbehaviordiscovery.ConvertPetriNet2PNwithLifeCycle
+	Note: this plugin aims to convert a petri net to a lifecycle petri net (i.e., split each transition to two transitions). 
+(20) Software Architecture Quality Evaluation-->software.processmining.multiviewinteraction.computeArchitectureMetrics
+	Note: this plugin aims to measure the quality of the current architecture, in terms of coupling among interfaces. (to eveluate results of interface identification approaches)
+(21) Single Component Log Extraction (no Instance Identification)-->software.processmining.componentbehaviordiscovery.SingleComponentLogExtractionPlugin_NoInstanceIdentification
+	Note: This plugin aims to extract the component log without instance identification, and also adding lifecycle transition. 
+(22) Single Component Log Extraction (with Instance Identification)-->software.processmining.componentbehaviordiscovery.SingleComponentLogExtractionPlugin_InstanceIdentification
+	Note: This plugin aims to extract the component log after instance identification, and also adding lifecycle transition. 
+Plugin---Design pattern detection
+(1)Class Type Hierarchy Discovery From Software Event Log-->software.designpattern.dynamicdiscovery.DiscoverClassTypeHierarchyPlugin
+	Note: this plugin aims to discover class type hierarchy information from execution data. 
+(2)Dynamic approach for Behavioral Design Pattern Detection from execution data-->software.designpattern.dynamicdiscovery.DynamicDesignPatternDiscoveryPlugin
+	Note: this plugin is used to take as inputs software execution log and returns a set of validated pattern instances	
+(3)Combination approach for Behavioral Design Pattern Detection-->software.designpattern.combinationdiscovery.CombinationalDesignPatternDetectionFramework
+	Note: this plugin is used to take as input software execution log and candidate pattern instances, and returns a set of validate pattern instances. 
+	Currently, it support observer, state, strategy, singleton patterns with the support the DPD tool. 
+	
+	

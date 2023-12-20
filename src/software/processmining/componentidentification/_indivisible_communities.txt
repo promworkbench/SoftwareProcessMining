@@ -1,0 +1,9 @@
+RA	junit.framework.Protectable	junit.framework.Test	junit.framework.TestCase	junit.framework.TestListener	junit.framework.TestResult	junit.framework.TestSuite	junit.swingui.TestHierarchyRunView	junit.swingui.TestRunner	junit.swingui.TestSuitePanel	junit.swingui.TestTreeCellRenderer	junit.swingui.TestTreeModel
+RBA	junit.framework.TestFailure	junit.runner.BaseTestRunner	junit.runner.ReloadingTestSuiteLoader	junit.runner.TestCaseClassLoader	junit.runner.TestSuiteLoader	junit.swingui.DefaultFailureDetailView	junit.swingui.FailureListCellRenderer	junit.swingui.FailureRunView	junit.swingui.TestRunContext
+RBBA	junit.framework.Assert	junit.framework.AssertionFailedError
+RBBBAA	junit.runner.FailureDetailView
+RBBBAB	junit.runner.Version
+RBBBBAA	junit.swingui.CounterPanel
+RBBBBAB	junit.swingui.ProgressBar
+RBBBBBA	junit.swingui.StatusLine
+RBBBBBB	junit.swingui.TestRunView
