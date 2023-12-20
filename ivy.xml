@@ -19,6 +19,10 @@
     	<!-- dependency org="prom" name="InductiveVisualMiner" rev="latest" changing="true" transitive="true" /-->
     	<dependency org="prom" name="Murata" rev="latest" changing="true" transitive="true" />
     	<dependency org="prom" name="PetriNets" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="DeclareMiner" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="Alignment" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="PNetAlignmentAnalysis" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="PNAnalysis" rev="latest" changing="true" transitive="true" />
     	<!-- Third party libraries. These may span multiple lines. -->
     	<!-- Please uncomment the second line in the resolve target in your build.xml file
     	     if you have any third party libraries. -->
@@ -26,5 +30,7 @@
     	<!-- dependency conf="lib->default" org="org.reflections" name="reflections" rev="0.9.10" /-->
     	<!-- Third party library downloaded from ProM library. -->
     	<!-- dependency conf="lib->default" org="prom-libs" name="opencsv" rev="2.4-patched" transitive="false" /--> 
+    	<dependency conf="lib->default" org="org.jblas" name="jblas" rev="1.2.5"/>
+    	<dependency conf="lib->default" org="org.apache.poi" name="poi" rev="5.2.5"/>    	
     </dependencies>
 </ivy-module>
